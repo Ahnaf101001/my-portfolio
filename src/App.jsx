@@ -177,8 +177,7 @@ export default function Portfolio() {
   const [tIdx, setTIdx] = useState(0);
   const [cIdx, setCIdx] = useState(0);
   const [del, setDel] = useState(false);
-  const [hovered, setHovered] = useState(null);
-
+  
   useEffect(() => {
     const h = () => setScrolled(window.scrollY > 60);
     window.addEventListener("scroll", h);
