@@ -37,12 +37,12 @@ const PROJECTS = [
     ghLink: "https://github.com/Ahnaf101001/task-master-web-app",
   },
   {
-    title: "Dried Fish CNN Classifier",
+    title: "DRIED FISH CLASSIFICATION USING CONVOLUTIONAL NEURAL NETWORKS",
     tech: ["Python", "TensorFlow", "CNN", "Deep Learning"],
     desc: "Undergraduate thesis project — an image classification system using Convolutional Neural Networks to identify and categorize dried fish species with high accuracy.",
     color: "#10b981",
     thesis: true,
-    ghLink: "https://github.com/Ahnaf101001",
+    ghLink: "https://github.com/Ahnaf101001/DRIED-FISH-CLASSIFICATION-USING-CONVOLUTIONAL-NEURAL-NETWORKS",
   },
 ];
 
