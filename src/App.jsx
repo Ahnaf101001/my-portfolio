@@ -25,8 +25,8 @@ const PROJECTS = [
     tech: ["React.js", "Node.js", "MongoDB", "Firebase", "Tailwind"],
     desc: "Full-stack gaming platform with auth, shop, orders dashboard and admin panel. Live-deployed with Express REST API and Firebase authentication.",
     color: "#0ea5e9",
-    liveLink: "#",
-    ghLink: "https://github.com/Ahnaf101001",
+    liveLink: "https://gameverse10100.netlify.app/",
+    ghLink: "https://github.com/Ahnaf101001/gameverse-client",
   },
   {
     title: "Task Master",
@@ -122,10 +122,6 @@ function Reveal({ children, delay = 0, from = "bottom" }) {
 
 function SkillBar({ name, pct, delay = 0 }) {
   const [ref, inView] = useInView();
-  const CAT_COLORS = {
-    Frontend: "#0ea5e9", Language: "#8b5cf6",
-    "AI/ML": "#10b981",  Backend: "#f59e0b", Tools: "#ec4899",
-  };
   const color = "#64ffda";
   return (
     <div ref={ref} style={{ marginBottom: 20 }}>
@@ -163,8 +159,6 @@ function SectionHeader({ num, sub, title }) {
   );
 }
 
-// ─── PHOTO (embedded base64 from upload) ─────────────────────────────────────
-// Using the actual uploaded photo path
 const PHOTO_SRC = "/My_Pic.jpg";
 
 // ─── MAIN ────────────────────────────────────────────────────────────────────
@@ -215,7 +209,6 @@ export default function Portfolio() {
         @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
         @keyframes float{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-14px) rotate(1deg)}}
         @keyframes fadeUp{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:none}}
-        @keyframes spin{to{transform:rotate(360deg)}}
         @keyframes pulse{0%,100%{opacity:.6;transform:scale(1)}50%{opacity:1;transform:scale(1.05)}}
         .hero-anim{animation:fadeUp .9s ease both}
         .hero-anim-2{animation:fadeUp .9s ease .25s both}
@@ -230,22 +223,90 @@ export default function Portfolio() {
         .cert-card:hover{transform:translateY(-4px) !important;box-shadow:0 12px 32px rgba(0,0,0,.35) !important}
         .contact-link{transition:transform .2s,box-shadow .2s,background .2s}
         .contact-link:hover{transform:translateY(-3px);box-shadow:0 8px 28px rgba(0,0,0,.4)}
-        .skill-cat{transition:background .2s,color .2s}
-        .skill-cat:hover{filter:brightness(1.2)}
         ::-webkit-scrollbar{width:5px}
         ::-webkit-scrollbar-track{background:#020b18}
         ::-webkit-scrollbar-thumb{background:#193a5e;border-radius:4px}
-        .menu-btn{display:none}
-        @media(max-width:820px){
-          .desktop-links{display:none !important}
-          .menu-btn{display:block !important}
-          .hero-inner{flex-direction:column !important;padding:100px 24px 60px !important;text-align:center}
-          .hero-photo-wrap{margin:40px auto 0 !important;max-width:260px}
-          .hero-btns{justify-content:center !important}
-          .section-pad{padding:80px 24px !important}
-          .skills-grid{grid-template-columns:1fr !important}
-          .about-grid{grid-template-columns:1fr !important;gap:36px !important}
-          .proj-grid{grid-template-columns:1fr !important}
+
+        /* ── GRADIENT TEXT FIX ── */
+        .gradient-name {
+          background: linear-gradient(135deg, #ccd6f6 20%, #64ffda 100%);
+          -webkit-background-clip: text;
+          background-clip: text;
+          -webkit-text-fill-color: transparent;
+          display: inline-block;
+        }
+
+        /* ── NAV ── */
+        .menu-btn { display: none; }
+        .desktop-links { display: flex; }
+
+        /* ── HERO LAYOUT ── */
+        .hero-inner {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-between;
+          width: 100%;
+          padding: 100px 80px 60px;
+          max-width: 1200px;
+          margin: 0 auto;
+          gap: 48px;
+        }
+        .hero-text { flex: 1; max-width: 560px; }
+        .hero-photo-wrap { flex-shrink: 0; margin-left: 0; }
+
+        /* ── SECTION PADDING ── */
+        .section-pad { padding: 110px 80px; }
+
+        /* ── GRIDS ── */
+        .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 72px; }
+        .about-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 64px; align-items: start; }
+        .proj-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px; }
+
+        /* ── TABLET (≤ 1024px) ── */
+        @media (max-width: 1024px) {
+          .hero-inner { padding: 100px 48px 60px; gap: 32px; }
+          .section-pad { padding: 80px 48px; }
+        }
+
+        /* ── MOBILE (≤ 768px) ── */
+        @media (max-width: 768px) {
+          .desktop-links { display: none !important; }
+          .menu-btn { display: block !important; }
+
+          .hero-inner {
+            flex-direction: column !important;
+            padding: 88px 24px 56px !important;
+            text-align: center;
+            gap: 40px;
+          }
+          .hero-text { max-width: 100%; }
+          .hero-btns { justify-content: center !important; }
+          .hero-photo-wrap {
+            order: -1;        /* photo ABOVE text on mobile */
+            margin: 0 auto;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+          }
+          .hero-photo-wrap .photo-inner img,
+          .hero-photo-wrap .photo-inner > div[style] {
+            width: 220px !important;
+            height: 260px !important;
+          }
+
+          .section-pad { padding: 64px 20px !important; }
+          .skills-grid { grid-template-columns: 1fr !important; }
+          .about-grid { grid-template-columns: 1fr !important; gap: 36px !important; }
+          .proj-grid { grid-template-columns: 1fr !important; }
+        }
+
+        /* ── SMALL MOBILE (≤ 480px) ── */
+        @media (max-width: 480px) {
+          .hero-inner { padding: 80px 16px 48px !important; }
+          .section-pad { padding: 56px 16px !important; }
+          .contact-links-wrap { flex-direction: column !important; align-items: stretch !important; }
+          .contact-links-wrap a { justify-content: center; }
         }
       `}</style>
 
@@ -260,7 +321,6 @@ export default function Portfolio() {
         borderBottom: scrolled ? "1px solid rgba(100,255,218,.08)" : "none",
         transition: "all .35s",
       }}>
-        {/* Logo */}
         <div
           onClick={() => scrollTo("about")}
           style={{ cursor: "pointer", display: "flex", alignItems: "center", gap: 10 }}
@@ -271,11 +331,12 @@ export default function Portfolio() {
             display: "flex", alignItems: "center", justifyContent: "center",
             fontWeight: 900, fontSize: 14, color: "#020b18",
           }}>AK</div>
-          <span style={{ color: "#e2e8f0", fontWeight: 800, fontSize: 16, letterSpacing: "-0.5px" }}>Ahnaf<span style={{ color: "#64ffda" }}>.</span></span>
+          <span style={{ color: "#e2e8f0", fontWeight: 800, fontSize: 16, letterSpacing: "-0.5px" }}>
+            Ahnaf<span style={{ color: "#64ffda" }}>.</span>
+          </span>
         </div>
 
-        {/* Desktop links */}
-        <ul className="desktop-links" style={{ display: "flex", gap: 36, listStyle: "none" }}>
+        <ul className="desktop-links" style={{ gap: 36, listStyle: "none" }}>
           {NAV_LINKS.map((l, i) => (
             <li key={l}>
               <span
@@ -293,7 +354,6 @@ export default function Portfolio() {
           ))}
         </ul>
 
-        {/* Hamburger */}
         <button
           className="menu-btn"
           onClick={() => setMenuOpen(o => !o)}
@@ -346,9 +406,9 @@ export default function Portfolio() {
           bottom: "10%", left: "-5%", filter: "blur(60px)", zIndex: 0,
         }} />
 
-        <div className="hero-inner" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", width: "100%", padding: "90px 80px 60px", zIndex: 2, maxWidth: 1200, margin: "0 auto" }}>
+        <div className="hero-inner" style={{ zIndex: 2 }}>
           {/* Text */}
-          <div style={{ flex: 1, maxWidth: 560 }}>
+          <div className="hero-text">
             <div className="hero-anim">
               <p style={{ color: "#64ffda", fontFamily: "monospace", fontSize: 14, letterSpacing: "0.1em", marginBottom: 18 }}>
                 &gt; Hello, World!
@@ -357,13 +417,12 @@ export default function Portfolio() {
             <div className="hero-anim">
               <h1 style={{ fontSize: "clamp(38px,6vw,72px)", fontWeight: 900, color: "#e2e8f0", lineHeight: 1.05, marginBottom: 6, letterSpacing: "-1.5px" }}>
                 Ahnaf Khan<br />
-                <span style={{ WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", background: "linear-gradient(135deg,#ccd6f6 20%,#64ffda 100%)" }}>
-                  Sadaf
-                </span>
+                {/* FIX: use a class + display:inline-block so gradient renders correctly */}
+                <span className="gradient-name">Sadaf</span>
               </h1>
             </div>
             <div className="hero-anim-2">
-              <p style={{ fontSize: "clamp(18px,2.5vw,28px)", color: "#64748b", fontWeight: 600, marginBottom: 28, minHeight: 40 }}>
+              <p style={{ fontSize: "clamp(16px,2.5vw,28px)", color: "#64748b", fontWeight: 600, marginBottom: 28, minHeight: 36 }}>
                 <span style={{ color: "#64ffda", fontFamily: "monospace" }}>&gt; </span>
                 {typed}
                 <span style={{ color: "#64ffda", animation: "blink 1s infinite", display: "inline-block" }}>▋</span>
@@ -391,26 +450,28 @@ export default function Portfolio() {
           </div>
 
           {/* Photo */}
-          <div className="hero-photo-wrap" style={{ marginLeft: 72, flexShrink: 0 }}>
-            <div className="photo-inner" style={{ position: "relative" }}>
-              {/* decorative ring */}
+          <div className="hero-photo-wrap">
+            <div className="photo-inner" style={{ position: "relative", display: "inline-block" }}>
+              {/* decorative rings */}
               <div style={{
                 position: "absolute", inset: -12,
                 borderRadius: 18,
                 border: "1px solid rgba(100,255,218,.18)",
                 zIndex: 0,
+                pointerEvents: "none",
               }} />
               <div style={{
                 position: "absolute", inset: -24,
                 borderRadius: 22,
                 border: "1px solid rgba(100,255,218,.07)",
                 zIndex: 0,
+                pointerEvents: "none",
               }} />
               <img
                 src={PHOTO_SRC}
                 alt="Ahnaf Khan Sadaf"
                 style={{
-                  width: 320, height: 370,
+                  width: 300, height: 350,
                   objectFit: "cover", objectPosition: "top center",
                   borderRadius: 14,
                   border: "2px solid rgba(100,255,218,.22)",
@@ -419,7 +480,6 @@ export default function Portfolio() {
                   display: "block",
                 }}
                 onError={(e) => {
-                  // Fallback: show initials avatar if image fails
                   e.target.style.display = "none";
                   e.target.nextSibling.style.display = "flex";
                 }}
@@ -427,7 +487,7 @@ export default function Portfolio() {
               {/* Fallback avatar */}
               <div style={{
                 display: "none",
-                width: 320, height: 370, borderRadius: 14,
+                width: 300, height: 350, borderRadius: 14,
                 background: "linear-gradient(135deg,#0f2139,#1e3a5f)",
                 border: "2px solid rgba(100,255,218,.22)",
                 alignItems: "center", justifyContent: "center",
@@ -450,11 +510,11 @@ export default function Portfolio() {
       </section>
 
       {/* ── ABOUT ── */}
-      <section id="about" className="section-pad" style={{ padding: "110px 80px", background: "rgba(8,20,40,.5)" }}>
+      <section id="about" className="section-pad" style={{ background: "rgba(8,20,40,.5)" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
           <SectionHeader num="01" sub="who am i" title="About Me" />
 
-          <div className="about-grid" style={{ display: "grid", gridTemplateColumns: "1.15fr 1fr", gap: 64, alignItems: "start" }}>
+          <div className="about-grid">
             {/* Left */}
             <Reveal delay={0.05}>
               <p style={{ color: "#94a3b8", fontSize: 15.5, lineHeight: 1.9, marginBottom: 18 }}>
@@ -468,7 +528,6 @@ export default function Portfolio() {
                 <strong style={{ color: "#e2e8f0" }}>Development Head</strong> of the BAUST Computer Club.
               </p>
 
-              {/* Info cards */}
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
                 {[
                   ["Name",     "Ahnaf Khan Sadaf"],
@@ -525,11 +584,11 @@ export default function Portfolio() {
       </section>
 
       {/* ── SKILLS ── */}
-      <section id="skills" className="section-pad" style={{ padding: "110px 80px" }}>
+      <section id="skills" className="section-pad">
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
           <SectionHeader num="02" sub="what i know" title="Skills" />
 
-          <div className="skills-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0 72px" }}>
+          <div className="skills-grid">
             {SKILLS.map((s, i) => (
               <Reveal key={s.name} delay={i * 0.05}>
                 <SkillBar {...s} delay={i * 0.06} />
@@ -537,7 +596,6 @@ export default function Portfolio() {
             ))}
           </div>
 
-          {/* Tech badges */}
           <Reveal delay={0.2}>
             <div style={{ marginTop: 52, display: "flex", flexWrap: "wrap", gap: 10 }}>
               {["React.js","JavaScript","Node.js","Express","MongoDB","Firebase","TailwindCSS","Git","Python","TensorFlow","C++","Vite"].map(t => (
@@ -554,11 +612,11 @@ export default function Portfolio() {
       </section>
 
       {/* ── PROJECTS ── */}
-      <section id="projects" className="section-pad" style={{ padding: "110px 80px", background: "rgba(8,20,40,.5)" }}>
+      <section id="projects" className="section-pad" style={{ background: "rgba(8,20,40,.5)" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
           <SectionHeader num="03" sub="what i've built" title="Projects" />
 
-          <div className="proj-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(320px,1fr))", gap: 24 }}>
+          <div className="proj-grid">
             {PROJECTS.map((p, i) => (
               <Reveal key={p.title} delay={i * 0.1}>
                 <div className="proj-card" style={{
@@ -567,10 +625,7 @@ export default function Portfolio() {
                   borderRadius: 14, padding: 30,
                   position: "relative", overflow: "hidden",
                 }}>
-                  {/* top accent */}
                   <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 3, background: p.color }} />
-
-                  {/* thesis badge */}
                   {p.thesis && (
                     <span style={{
                       position: "absolute", top: 18, right: 18,
@@ -579,14 +634,9 @@ export default function Portfolio() {
                       border: "1px solid " + p.color + "44", letterSpacing: "0.1em",
                     }}>THESIS</span>
                   )}
-
-                  {/* folder icon */}
                   <div style={{ fontSize: 32, marginBottom: 16 }}>📁</div>
-
                   <h3 style={{ fontSize: 20, fontWeight: 800, color: "#e2e8f0", marginBottom: 10 }}>{p.title}</h3>
                   <p style={{ color: "#8892b0", fontSize: 14, lineHeight: 1.75, marginBottom: 20 }}>{p.desc}</p>
-
-                  {/* tech pills */}
                   <div style={{ marginBottom: 20 }}>
                     {p.tech.map(t => (
                       <span key={t} style={{
@@ -597,8 +647,6 @@ export default function Portfolio() {
                       }}>{t}</span>
                     ))}
                   </div>
-
-                  {/* links */}
                   <div style={{ display: "flex", gap: 16 }}>
                     <a href={p.ghLink} target="_blank" rel="noreferrer"
                       style={{ color: "#8892b0", fontSize: 12, fontWeight: 600, textDecoration: "none", display: "flex", alignItems: "center", gap: 5 }}>
@@ -619,11 +667,10 @@ export default function Portfolio() {
       </section>
 
       {/* ── CERTIFICATIONS ── */}
-      <section id="certifications" className="section-pad" style={{ padding: "110px 80px" }}>
+      <section id="certifications" className="section-pad">
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
           <SectionHeader num="04" sub="achievements" title="Certifications" />
-
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(270px,1fr))", gap: 20 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(260px,1fr))", gap: 20 }}>
             {CERTS.map((c, i) => (
               <Reveal key={c.title} delay={i * 0.08}>
                 <div className="cert-card" style={{
@@ -644,7 +691,7 @@ export default function Portfolio() {
       </section>
 
       {/* ── CONTACT ── */}
-      <section id="contact" className="section-pad" style={{ padding: "110px 80px", background: "rgba(8,20,40,.5)", textAlign: "center" }}>
+      <section id="contact" className="section-pad" style={{ background: "rgba(8,20,40,.5)", textAlign: "center" }}>
         <div style={{ maxWidth: 640, margin: "0 auto" }}>
           <Reveal>
             <p style={{ color: "#64ffda", fontFamily: "monospace", fontSize: 12, letterSpacing: "0.15em", marginBottom: 12 }}>05. get in touch</p>
@@ -656,7 +703,7 @@ export default function Portfolio() {
           </Reveal>
 
           <Reveal delay={0.15}>
-            <div style={{ display: "flex", justifyContent: "center", gap: 14, flexWrap: "wrap" }}>
+            <div className="contact-links-wrap" style={{ display: "flex", justifyContent: "center", gap: 14, flexWrap: "wrap" }}>
               {[
                 { label: "ahnaf10100@gmail.com", href: "mailto:ahnaf10100@gmail.com", color: "#64ffda",   icon: "✉" },
                 { label: "LinkedIn",             href: "https://www.linkedin.com/in/ahnafkhansadaf/", color: "#0ea5e9", icon: "💼", ext: true },
@@ -688,7 +735,7 @@ export default function Portfolio() {
 
       {/* ── FOOTER ── */}
       <footer style={{
-        padding: "28px 80px", textAlign: "center",
+        padding: "28px 48px", textAlign: "center",
         color: "#334155", fontSize: 13,
         borderTop: "1px solid rgba(255,255,255,.04)",
       }}>
