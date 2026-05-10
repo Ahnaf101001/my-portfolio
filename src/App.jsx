@@ -41,8 +41,8 @@ const PROJECTS = [
     tech: ["React.js", "Node.js", "MongoDB", "Firebase", "Tailwind"],
     desc: "Full-stack library management platform with book browsing, borrowing system, and user dashboard. Features auth, admin panel, and a clean modern UI for managing library collections.",
     color: "#f58a1f",
-    liveLink: "https://your-genlibrary-link.netlify.app/",
-    ghLink: "https://github.com/Ahnaf101001/gen-library",
+    liveLink: "https://gen-library.web.app/",
+    ghLink: "https://github.com/Ahnaf101001/gen-library-client",
   },
   {
     title: "Dried fish classification using Convolutional Neural Networks (CNNs)",
