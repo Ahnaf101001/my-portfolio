@@ -21,7 +21,7 @@ const SKILLS = [
 
 const PROJECTS = [
   {
-    title: "Gameverse",
+    title: "Game Verse",
     tech: ["React.js", "Node.js", "MongoDB", "Firebase", "Tailwind"],
     desc: "Full-stack gaming platform with auth, shop, orders dashboard and admin panel. Live-deployed with Express REST API and Firebase authentication.",
     color: "#0ea5e9",
