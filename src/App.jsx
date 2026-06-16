@@ -33,7 +33,7 @@ const PROJECTS = [
     tech: ["JavaScript", "React.js", "CSS3"],
     desc: "Clean task management app with drag-and-drop interface, local persistence and animated transitions — showcasing practical front-end engineering.",
     color: "#8b5cf6",
-    liveLink: "https://task-master-web-app.web.app/",
+    liveLink: "https://taskmasterwebapplication.netlify.app/",
     ghLink: "https://github.com/Ahnaf101001/task-master-web-app",
   },
   {
